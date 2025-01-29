@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends tzdata git \
 
 RUN git clone https://github.com/fish2018/ClashForge.git \
     && mv ClashForge/* . \
-    && rm -rf ClashForge
+    && rm -rf ClashForge \
+    && sed -i 's|https://slink.ltd/|https://ghproxy.dsdog.tk/|g' ClashForge.py
 
 # 复制执行文件到容器中
 COPY upload_gist.py .
